@@ -1,0 +1,63 @@
+
+For Brand New Node js App: 
+  ☐ create a new folder
+  ☐ create a file name as index.js
+  ☐ npm init
+  ☐ npm i express 
+  ☐ npm i -g nodemon
+  ☐ change script object of package.json file
+    
+    'server': "nodemon index.js"
+
+
+
+
+Integrate Node js app in React js app: 
+  ☐ create a new folder named backend
+  ☐ create a file name as index.js
+  ☐ npm i express 
+  ☐ npm i -g nodemon
+  ☐ add below in script object of package.json file 
+    
+    "server": "nodemon ./backend/server.js"
+
+  ☐ Paste below code in index.js file of backend folder
+
+    const app = require('express')()
+    
+    const port = process.env.PORT || 5000
+
+
+    app.get('/routename', (req, res) => {
+      // your code
+    })
+
+    app.listen(port,() => console.log('Project is Running'))
+
+  ☐ create folder named as "handler" in backend folder
+
+
+Connection to Mongodb:
+  ☐ npm i mongoose
+  ☐ const mongoose = require('mongoose')
+  ☐ paste below code in index.js file under all imports
+  
+  (async () => {
+    mongoose.set('useCreateIndex', true)
+    mongoose.set('useFindAndModify', false)
+    await mongoose
+      .connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then(() => {
+        console.log('MongoDB Connected…')
+      })
+      .catch((err) => {
+        console.log('ERROR OF CONNECT : ', err)
+        process.env.CONNECTION_ERROR = {
+          err,
+          msg: 'Service Unavailable, please try again later!',
+        }
+      })
+  })()

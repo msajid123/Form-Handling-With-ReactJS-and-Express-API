@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "extends": [
+    "plugin:eslint:eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "eslint-disable": "react-native/no-inline-styles"
+  }
+}
